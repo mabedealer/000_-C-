@@ -11,7 +11,7 @@ public class CannonController : MonoBehaviour
     Transform gateTransform;                //発射口のTransform
     float passedTimes = 0;                  //経過時間
                                             //距離チェック
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+                                            // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //発射口オブジェクトのTransformを取得

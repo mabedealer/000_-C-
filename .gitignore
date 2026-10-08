@@ -106,3 +106,7 @@ UserSettings/
 Assets/TextMesh Pro
 
 #独自に入れた書式・アセットやレジストリで重いものはここに追加していく
+Assets/Font/NotoSansJP-Medium SDF.asset
+Assets/Font/NotoSansJP-Medium SDF.asset.meta
+Assets/Font/NotoSansJP-Medium.ttf
+Assets/Font/NotoSansJP-Medium.ttf.meta

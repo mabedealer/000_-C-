@@ -15,8 +15,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Stage2.unity
     guid: 96fcb91fcf88c4c168922f12b14fa5cc
   - enabled: 1
+    path: Assets/Scenes/BaseForcedScrollStage.unity
+    guid: 59c2af99a578548f79241a89c74c667f
+  - enabled: 1
     path: Assets/Scenes/Result.unity
-    guid: ea3be7cbeee07496ebd3c1fa33ee8319
+    guid: 10ecf2c03dd18444db6a032e68982747
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
