@@ -31,25 +31,59 @@ public class CannonController : MonoBehaviour
             //待機時間経過
             if (passedTimes > delayTime)
             {
+
                 //テキストをみて完成させましょう
+
+                passedTimes = 0; //時間を0にリセット
+                //砲弾をプレハブから作る                
+                Vector2 pos = new Vector2(gateTransform.position.x, gateTransform.position.y);
+                GameObject obj = Instantiate(objPrefab, pos, Quaternion.identity);
+                //砲身が向いている方向に発射する
+                Rigidbody2D rbody = obj.GetComponent<Rigidbody2D>(); void Update()
+                {
+                    //待機時間加算
+                    passedTimes += Time.deltaTime;
+                    //Playerとの距離チェック
+                    if (CheckLength(player.transform.position))
+                    {
+                        //待機時間経過
+                        if (passedTimes > delayTime)
+                        {
+
+                            //テキストをみて完成させましょう
+
+                            passedTimes = 0; //時間を0にリセット
+                                             //砲弾をプレハブから作る                
+                            Vector2 pos = new Vector2(gateTransform.position.x, gateTransform.position.y);
+                            //① 砲弾をプレハブから作って変数「obj」に入れる
+                            //砲身が向いている方向に発射する
+                            Rigidbody2D rbody = obj.GetComponent<Rigidbody2D>();//②【この行で】生み出したばかりの弾（obj）から Rigidbody2D を取得して「rbody」に入れている
+                        }
+                    }
+                    float anglez = transform.localEulerAngles.z;
+                    float x = Mathf.Cos(anglez * Mathf.Deg2Rad);
+                    float y = Mathf.Sin(anglez * Mathf.Deg2Rad);
+                    Vector2 v = new Vector2(x, y) * fireSpeed;
+                    rbody.AddForce(v, ForceMode2D.Impulse);
+                }
             }
         }
-    }
 
-    bool CheckLength(Vector2 targetPos)
-    {
-        bool ret = false;
-        float d = Vector2.Distance(transform.position, targetPos);
-        if (length >= d)
+        bool CheckLength(Vector2 targetPos)
         {
-            ret = true;
+            bool ret = false;
+            float d = Vector2.Distance(transform.position, targetPos);
+            if (length >= d)
+            {
+                ret = true;
+            }
+            return ret;
         }
-        return ret;
-    }
 
-    //範囲表示
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(transform.position, length);
+        //範囲表示
+        void OnDrawGizmosSelected()
+        {
+            Gizmos.DrawWireSphere(transform.position, length);
+        }
     }
 }
